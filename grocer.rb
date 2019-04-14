@@ -1,6 +1,16 @@
 def consolidate_cart(cart)
-  # code here
+  cart.each_with_object({}) do |item, hash|
+    item.each do |name, attributes|
+     if hash[name]
+       attributes[:count] += 1 
+     else 
+       attributes[:count] = 1
+       hash[name] = attributes
+     end
+    end
+  end
 end
+
 
 def apply_coupons(cart, coupons)
   # code here
